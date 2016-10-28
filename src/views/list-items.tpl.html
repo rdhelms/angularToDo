@@ -1,0 +1,23 @@
+<ul class='items'>
+  <li ng-repeat="item in listCtrl.items | orderBy: '-id' | filter: listCtrl.sortBy.value : listCtrl.sortBy.exact : listCtrl.sortBy.key">
+    <article>
+        <button ng-click="listCtrl.toggleComplete(item)" ng-class="{complete: item.completed}" class='check'></button>
+        <form ng-submit="listCtrl.updateItems(item)">
+          <input ng-blur="listCtrl.updateItems(item)" ng-class="{complete: item.completed, edited: item.edited}" ng-model="item.content">
+        </form>
+        <button ng-click="listCtrl.delete(item)" class='delete'>&#x2715;</button>
+    </article>
+  </li>
+</ul>
+
+<footer>
+  <p class='remaining'><span class='incomplete-items'>{{listCtrl.numIncomplete}}</span> items left</p>
+  <nav>
+    <ul>
+        <li><button ng-click="listCtrl.sortBy = {key: '$', exact: false, value: ''}; listCtrl.sortType = 'all'" class='show-all' ng-class="{active: listCtrl.sortType === 'all'}">All</button></li>
+        <li><button ng-click="listCtrl.sortBy = {key: 'completed', exact: true, value: false}; listCtrl.sortType = 'active'" class='show-active' ng-class="{active: listCtrl.sortType === 'active'}">Active</button></li>
+        <li><button ng-click="listCtrl.sortBy = {key: 'completed', exact: true, value: true}; listCtrl.sortType = 'completed'" class='show-completed' ng-class="{active: listCtrl.sortType === 'completed'}">Completed</button></li>
+    </ul>
+  </nav>
+  <button ng-click="listCtrl.deleteCompleted()" class='clear'>Clear completed</button>
+</footer>

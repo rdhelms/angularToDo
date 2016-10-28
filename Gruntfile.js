@@ -31,7 +31,7 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'lib/js/app.js': ['src/js/*.js'],
-                    'lib/js/vendor.js': ['src/js/vendor/angular.min.js', 'src/js/vendor/angular-ui-router.js', 'src/js/vendor/*.js']
+                    'lib/js/vendor.js': ['src/js/vendor/angular.js', 'src/js/vendor/angular-ui-router.js', 'src/js/vendor/angular-local-storage.js', 'src/js/vendor/jquery-3.1.1.min.js', 'src/js/vendor/handlebars-v4.0.5.js']
                 }
             }
         },
